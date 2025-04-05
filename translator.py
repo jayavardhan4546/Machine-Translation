@@ -1,11 +1,12 @@
-from translate import Translator
+from googletrans import Translator
 
 class translation:
 
-    def __init__(self, text):
+    def __init__(self, text, to_lang):
         self.text = text
+        self.to_lang = to_lang
 
     def translate_word(self):
-        translator = Translator(from_lang='en', to_lang='hi')
-        translation = translator.translate(self.text)
-        return translation
+        translator = Translator()
+        translated = translator.translate(self.text, src='en', dest=self.to_lang)
+        return translated.text
